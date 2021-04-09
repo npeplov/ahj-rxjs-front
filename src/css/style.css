@@ -1,0 +1,62 @@
+body {
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px 20px;
+}
+
+h1, h2 {
+  font-weight: 400;
+}
+
+.widget {
+  margin: 0 auto;
+  width: 725px;
+  min-height: 400px;
+  padding: 20px;
+  box-sizing: border-box;
+
+  font-weight: 400;
+  border: 1px solid #495057;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.container {
+  display: table;
+  border: 1px solid #555;
+  transition: 1s ease-in;
+  background-color: #faf6c6;
+}
+
+.animate {
+  background-color: #fff;
+}
+
+.row {
+  display: table-row;
+}
+
+.col {
+  display: table-cell;
+  padding: 20px;
+}
+
+.widget p {
+  font-weight: 300;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  border: 1px solid #495057;
+  width: 400px;
+  padding: 30px 47px;
+  margin: 0 20px;
+}
+
+.modal input {
+  margin: 5px 0;
+}
