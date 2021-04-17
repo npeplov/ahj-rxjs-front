@@ -1,0 +1,49 @@
+body {
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px 20px;
+}
+
+h1, h2 {
+  font-weight: 400;
+}
+
+.widget {
+  margin: 0 auto;
+  width: 725px;
+  min-height: 400px;
+  padding: 20px;
+  box-sizing: border-box;
+
+  font-weight: 400;
+  border: 1px solid #495057;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.container {
+  display: table;
+  border: 1px solid #555;
+}
+
+.row {
+  display: table-row;
+  background-color: #fff;
+  transition: all 1s ease-out;
+}
+
+.row.animate {
+  background-color: #faf6c6
+}
+
+.col {
+  display: table-cell;
+  padding: 20px;
+}
+
+.widget p {
+  font-weight: 300;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9yeGpzLy4vc3JjL2Nzcy9zdHlsZS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxlQUFlO0VBQ2Ysb0NBQW9DO0VBQ3BDLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGNBQWM7RUFDZCxZQUFZO0VBQ1osaUJBQWlCO0VBQ2pCLGFBQWE7RUFDYixzQkFBc0I7O0VBRXRCLGdCQUFnQjtFQUNoQix5QkFBeUI7RUFDekIsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQix5QkFBeUI7QUFDM0I7O0FBRUE7RUFDRSxjQUFjO0VBQ2Qsc0JBQXNCO0FBQ3hCOztBQUVBO0VBQ0Usa0JBQWtCO0VBQ2xCLHNCQUFzQjtFQUN0QiwyQkFBMkI7QUFDN0I7O0FBRUE7RUFDRTtBQUNGOztBQUVBO0VBQ0UsbUJBQW1CO0VBQ25CLGFBQWE7QUFDZjs7QUFFQTtFQUNFLGdCQUFnQjtBQUNsQixDIiwiZmlsZSI6Im1haW4uY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgZm9udC1mYW1pbHk6ICdPcGVuIFNhbnMnLCBzYW5zLXNlcmlmO1xuICBwYWRkaW5nOiAxMHB4IDIwcHg7XG59XG5cbmgxLCBoMiB7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG5cbi53aWRnZXQge1xuICBtYXJnaW46IDAgYXV0bztcbiAgd2lkdGg6IDcyNXB4O1xuICBtaW4taGVpZ2h0OiA0MDBweDtcbiAgcGFkZGluZzogMjBweDtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcblxuICBmb250LXdlaWdodDogNDAwO1xuICBib3JkZXI6IDFweCBzb2xpZCAjNDk1MDU3O1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xufVxuXG4uY29udGFpbmVyIHtcbiAgZGlzcGxheTogdGFibGU7XG4gIGJvcmRlcjogMXB4IHNvbGlkICM1NTU7XG59XG5cbi5yb3cge1xuICBkaXNwbGF5OiB0YWJsZS1yb3c7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmY7XG4gIHRyYW5zaXRpb246IGFsbCAxcyBlYXNlLW91dDtcbn1cblxuLnJvdy5hbmltYXRlIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZhZjZjNlxufVxuXG4uY29sIHtcbiAgZGlzcGxheTogdGFibGUtY2VsbDtcbiAgcGFkZGluZzogMjBweDtcbn1cblxuLndpZGdldCBwIHtcbiAgZm9udC13ZWlnaHQ6IDMwMDtcbn0iXSwic291cmNlUm9vdCI6IiJ9*/
