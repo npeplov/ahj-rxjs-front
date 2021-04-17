@@ -1,8 +1,7 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-import { of, interval } from 'rxjs';
-import { map, catchError, take } from 'rxjs/operators';
+import { interval, of } from 'rxjs';
+import {
+  map, exhaustMap, catchError, take,
+} from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 
 export default class Logic {
@@ -10,15 +9,30 @@ export default class Logic {
     this.gui = gui;
     // this.url = 'http://localhost:7070/api/check-email';
     this.url = 'https://npeplov-ahj-rxjs-back.herokuapp.com/api/check-email';
-    this.messages = null;
+    this.last = 0;
   }
 
   init() {
-    this.sendAjax();
+    this.getMail();
+  }
+
+  async getMail() {
+    interval(4000).pipe(
+      take(3),
+      exhaustMap(() => this.sendAjax()), // take раз делаем запрос
+      map((response) => response.response.messages, // получаем массив сообщений
+        catchError((error) => { // ловим ошибку если есть
+          console.log('error: ', error);
+          return of(error);
+        })),
+    )
+      .subscribe((messages) => { // подписались на результат pipe
+        this.showMessages(messages);
+      });
   }
 
   sendAjax() {
-    const obj$ = ajax({
+    return ajax({
       url: this.url,
       method: 'POST',
       headers: {
@@ -26,55 +40,29 @@ export default class Logic {
         'rxjs-custom-header': 'Rxjs',
       },
       body: { email: 'ya@ya.ru' },
-    })
-      .pipe(
-        map((response) => {
-          // console.log(response.response.messages);
-          if (response) this.messages = response.response.messages;
-          this.showMessages();
-        }),
-        catchError((error) => {
-          console.log('error: ', error);
-          return of(error);
-        }),
-      );
-    const numbers = interval(4000);
-    const takeFourNumbers = numbers.pipe(take(5));
-    takeFourNumbers.subscribe(() => obj$.subscribe());
+    });
   }
 
-  showMessages() {
-    if (this.messages) {
-      this.gui.widgetContainer.classList.toggle('animate');
-      this.gui.widgetContainer.innerHTML = '';
-      for (let i = this.messages.length - 1; i > 0; i -= 1) {
-        const mes = this.messages[i];
-        this.gui.widgetContainer.innerHTML += this.gui.rowTemplate(
-          mes.from, mes.subject, mes.received,
-        );
+  showMessages(messages) {
+    if (!this.last) {
+      for (let i = this.last; i < messages.length - 1; i += 1) { // не вкл посл эл arr
+        const mes = messages[i];
+        this.gui.widgetContainer.insertAdjacentHTML('afterbegin', (this.gui.rowTemplate(
+          mes.from, mes.subject, mes.received, i,
+        )));
       }
     }
+    this.last = messages.length - 1;
+    this.animate(messages[this.last]); // последний элемент вывод отдельно
   }
 
-  // getErr() {
-  //   console.log(this);
-  //   const obs$ = ajax('https://api.github.com/404').pipe(
-  //     map((userResponse) => console.log('users: ', userResponse)),
-  //     catchError((error) => {
-  //       console.log('error: ', error);
-  //       return of(error);
-  //     }),
-  //   );
-  //   obs$.subscribe();
-  // }
+  animate(mes) {
+    this.gui.widgetContainer.insertAdjacentHTML('afterbegin', this.gui.rowTemplate(
+      mes.from, mes.subject, mes.received, this.last,
+    ));
+    this.gui.widgetContainer.firstElementChild.classList.toggle('animate');
+    setTimeout(() => { // без таймаута смена класса не анимируется, почему не понял
+      this.gui.widgetContainer.firstElementChild.classList.toggle('animate');
+    }, 500);
+  }
 }
-
-// fromEvent(this.gui.widgetInput, 'input')
-// .pipe(
-//   map((event) => event.target.value.trim()),
-//   filter((value) => value !== ''),
-//   // map вместо объекта-события вернет value элемента-таргета
-// )
-// .subscribe((value) => {
-//   console.log(value);
-// });

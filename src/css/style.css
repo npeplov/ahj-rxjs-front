@@ -25,16 +25,16 @@ h1, h2 {
 .container {
   display: table;
   border: 1px solid #555;
-  transition: 1s ease-in;
-  background-color: #faf6c6;
-}
-
-.animate {
-  background-color: #fff;
 }
 
 .row {
   display: table-row;
+  background-color: #fff;
+  transition: all 1s ease-out;
+}
+
+.row.animate {
+  background-color: #faf6c6
 }
 
 .col {
@@ -44,19 +44,4 @@ h1, h2 {
 
 .widget p {
   font-weight: 300;
-}
-
-.hidden {
-  display: none;
-}
-
-.modal {
-  border: 1px solid #495057;
-  width: 400px;
-  padding: 30px 47px;
-  margin: 0 20px;
-}
-
-.modal input {
-  margin: 5px 0;
 }
